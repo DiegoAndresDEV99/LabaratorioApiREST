@@ -1,6 +1,6 @@
 FROM node:18-alpine
 WORKDIR /app
-RUN npm install express
+RUN npm install express mongoose
 COPY . .
 EXPOSE 5000
 CMD ["node", "server.js"]

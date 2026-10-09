@@ -1,8 +1,19 @@
 services:
+  mi-mongo:
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-datos:/data/db
+
   mi-api-backend:
     build: ./Api-Backend
     ports:
       - "5000:5000"
+    environment:
+      MONGO_URL: mongodb://mi-mongo:27017/tareasdb
+    depends_on:
+      - mi-mongo
 
   mi-web-frontend:
     build: ./app-frontend
@@ -10,3 +21,6 @@ services:
       - "8082:80"
     depends_on:
       - mi-api-backend
+
+volumes:
+  mongo-datos:

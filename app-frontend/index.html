@@ -25,7 +25,7 @@
       lista.innerHTML = '';
 
       tareas.forEach(t => {
-        lista.innerHTML += `<li>${t.texto} <button onclick="eliminarTarea(${t.id})">❌</button></li>`;
+        lista.innerHTML += `<li>${t.texto} <button onclick="eliminarTarea('${t.id}')">❌</button></li>`;
       });
     }
 
