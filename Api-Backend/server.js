@@ -27,7 +27,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// Modelo de tarea en MongoDB (reemplaza la simulación en memoria).
+// Modelo de tarea en MongoDB .
 // El _id de Mongo se expone como "id" para mantener el mismo contrato JSON con el frontend
 const tareaSchema = new mongoose.Schema({ texto: { type: String, required: true } });
 tareaSchema.set('toJSON', {
@@ -67,7 +67,6 @@ app.delete('/api/tareas/:id', async (req, res) => {
   res.json({ mensaje: "Tarea eliminada correctamente" });
 });
 
-// Express 4 no captura errores de funciones async: este manejador evita que la API se caiga
 app.use((err, req, res, next) => {
   console.error(err);
   res.status(500).json({ mensaje: "Error interno del servidor" });
